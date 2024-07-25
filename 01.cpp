@@ -64,7 +64,7 @@ void Coleccion::mostrarTodosLosAlbums(){
 }
 
 Album* Coleccion::buscarAlbumPorTitulo(string titulo) {
-    for  (size_t i = 0; i < albums.size(); ++i){
+    for (size_t i = 0; i < albums.size(); ++i){
         if (albums[i].getTitulo() == titulo){
             return &albums[i];
         }
