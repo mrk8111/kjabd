@@ -2,21 +2,29 @@
 using namespace std;
 
 class Hora {
-private:
-    int hora;
+private: 
+    int horas;
     int minutos;
     int segundos;
 public:
-    Hora(int, int, int);
-    void mostrarHora();    
+    Hora(int, int , int);
+    void setHora(int _horas, int _minutos, int _segundos);
+    string getHora();
+    void mostrarHora();        
 };
 
-Hora::Hora(int _hora, int _minutos, int _segundos){
-    if (_hora >= 0 and _hora < 24){
-        hora = _hora;
+Hora::Hora(int _horas, int _minutos, int _segundos){
+    horas = _horas;
+    minutos = _minutos;
+    segundos = _segundos;
+}
+
+void Hora::setHora(int _horas, int _minutos, int _segundos){
+    if (_horas >= 0 and _horas < 24){
+        horas = _horas;
     }
     else{
-        hora = 0;
+        horas = 0;
     }
 
 
@@ -28,25 +36,33 @@ Hora::Hora(int _hora, int _minutos, int _segundos){
     }
 
 
-    if (_segundos >= 0 and _segundos <60){
+    if (_segundos >= 0 and _segundos < 60){
         segundos = _segundos;
     }
     else{
         segundos = 0;
-    }  
+    }
+}
+
+string Hora::getHora(){
+    string h = to_string(horas);
+    string m = to_string(minutos);
+    string s = to_string(segundos);
+
+    return h + " : " + m + " : " + s;
 }
 
 void Hora::mostrarHora(){
-    cout << "La hora es: " << hora << " : " << minutos << " : " << segundos << endl;
+    cout << "La hora es: " << getHora() << endl;
 }
 
 int main() {
-    Hora h1(13,33,33);
+    Hora h1(13,33,45);
     cout << "Hora normal: " << endl;
     h1.mostrarHora();
 
-    Hora h2(25,61,61);
-    cout << "Hora si tiene valores no validos: " << endl;
+    Hora h2(0,0,0);
+    cout << "Hora incorrecta: " << endl;
     h2.mostrarHora();
 
     return 0;
